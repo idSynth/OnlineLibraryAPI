@@ -1,0 +1,50 @@
+@startuml
+!theme plain
+class Users {
+  + id : INT
+  --
+  login : VARCHAR(100)
+  password : VARCHAR(100)
+  role : VARCHAR(50)
+}
+
+class Books {
+  + id : INT
+  --
+  name : VARCHAR(100)
+}
+
+class Authors {
+  + id : INT
+  --
+  name : VARCHAR(100)
+}
+
+class Genres {
+  + id : INT
+  --
+  genre : VARCHAR(100)
+}
+
+class BookAuthors {
+  + book_id : INT
+  + author_id : INT
+}
+
+class BookGenres {
+  + book_id : INT
+  + genre_id : INT
+}
+
+class UserBooks {
+  + user_id : INT
+  + book_id : INT
+}
+
+Users "1" -- "N" UserBooks : has
+Books "1" - "N" UserBooks : has
+Books "1" -- "N" BookAuthors : has
+Authors "1" - "N" BookAuthors : has
+Books "1" -- "N" BookGenres : has
+Genres "1" - "N" BookGenres : has
+@enduml
