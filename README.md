@@ -11,8 +11,8 @@ Laravel Lumen is a stunningly fast PHP micro-framework for building w~~~~eb appl
 
 ## Entity Relation Diagram
 
-![UML-Activity](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/idSynth/OnlineLibraryAPI/uml/ERDiagram.puml)
+![UML-Activity](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/idSynth/OnlineLibraryAPI/main/uml/ERDiagram.puml)
 
 ## Class Diagram
 
-![UML-Activity](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/idSynth/OnlineLibraryAPI/uml/ClassDiagram.puml)
+![UML-Activity](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/idSynth/OnlineLibraryAPI/main/uml/ClassDiagram.puml)
