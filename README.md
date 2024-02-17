@@ -16,3 +16,5 @@ Laravel Lumen is a stunningly fast PHP micro-framework for building web applicat
 ## Class Diagram
 
 ![UML-Activity](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/idSynth/OnlineLibraryAPI/main/uml/ClassDiagram.puml)
+
+### Виконав студент АІ-212 Іванов Михайло
