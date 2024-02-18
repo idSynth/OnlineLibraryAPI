@@ -37,7 +37,7 @@ class BookGenres {
   + genre_id : INT
 }
 
-class UserBooks {
+class UserFavorites {
   + user_id : INT
   + book_id : INT
 }
