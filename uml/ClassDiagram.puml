@@ -42,8 +42,8 @@ class UserFavorites {
   + book_id : INT
 }
 
-Users "1" -- "N" UserBooks : has
-Books "1" - "N" UserBooks : has
+Users "1" -- "N" UserFavorites : has
+Books "1" - "N" UserFavorites : has
 Books "1" -- "N" BookAuthors : has
 Authors "1" - "N" BookAuthors : has
 Books "1" -- "N" BookGenres : has
