@@ -42,8 +42,8 @@ entity "UserFavorites" as userfavorites {
   + book_id : INT
 }
 
-users -- userbooks : "1:N"
-books - userbooks : "1:N"
+users -- userfavorites : "1:N"
+books - userfavorites : "1:N"
 books -- bookauthors : "1:N"
 authors - bookauthors : "1:N"
 books -- bookgenres : "1:N"
