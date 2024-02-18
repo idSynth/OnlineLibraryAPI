@@ -6,7 +6,7 @@ class Users {
   login : VARCHAR(100)
   password : VARCHAR(100)
   role : VARCHAR(50)
-  api_key : VARCHAR(200)
+  api_key : VARCHAR(100)
 }
 
 class Books {
