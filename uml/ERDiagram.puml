@@ -37,7 +37,7 @@ entity "BookGenres" as bookgenres {
   + genre_id : INT
 }
 
-entity "UserBooks" as userbooks {
+entity "UserFavorites" as userfavorites {
   + user_id : INT
   + book_id : INT
 }
