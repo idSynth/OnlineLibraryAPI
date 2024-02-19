@@ -16,3 +16,14 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+//$router->get('/books', 'BookController@index');
+
+$router->group(['prefix' => 'api/'], function ($app) {
+    $app->get('login/','UserController@authenticate');
+    $app->post('signup/','UserController@register');
+    $app->get('books/', 'BookController@index');
+    $app->get('books/{id}/', 'BookController@show');
+    $app->put('todo/{id}/', 'TodoController@update');
+    $app->delete('todo/{id}/', 'TodoController@destroy');
+});
