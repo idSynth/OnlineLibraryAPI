@@ -6,6 +6,7 @@ entity "Users" as users {
   login : VARCHAR(100)
   password : VARCHAR(100)
   role : VARCHAR(50)
+  api_key : VARCHAR(100)
 }
 
 entity "Books" as books {
@@ -36,13 +37,13 @@ entity "BookGenres" as bookgenres {
   + genre_id : INT
 }
 
-entity "UserBooks" as userbooks {
+entity "UserFavorites" as userfavorites {
   + user_id : INT
   + book_id : INT
 }
 
-users -- userbooks : "1:N"
-books - userbooks : "1:N"
+users -- userfavorites : "1:N"
+books - userfavorites : "1:N"
 books -- bookauthors : "1:N"
 authors - bookauthors : "1:N"
 books -- bookgenres : "1:N"

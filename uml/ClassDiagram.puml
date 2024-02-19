@@ -6,6 +6,7 @@ class Users {
   login : VARCHAR(100)
   password : VARCHAR(100)
   role : VARCHAR(50)
+  api_key : VARCHAR(100)
 }
 
 class Books {
@@ -36,13 +37,13 @@ class BookGenres {
   + genre_id : INT
 }
 
-class UserBooks {
+class UserFavorites {
   + user_id : INT
   + book_id : INT
 }
 
-Users "1" -- "N" UserBooks : has
-Books "1" - "N" UserBooks : has
+Users "1" -- "N" UserFavorites : has
+Books "1" - "N" UserFavorites : has
 Books "1" -- "N" BookAuthors : has
 Authors "1" - "N" BookAuthors : has
 Books "1" -- "N" BookGenres : has
