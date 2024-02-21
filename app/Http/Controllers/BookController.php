@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Books;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
-    public function index()
+    public function showAll()
     {
         return Books::all();
     }
 
-    public function store(Request $request)
+    public function add(Request $request)
     {
         $data = $request->validate([
             'name' => ['required']
@@ -21,7 +22,7 @@ class BookController extends Controller
         return Books::create($data);
     }
 
-    public function show(Books $id)
+    public function showById(Books $id)
     {
         $book = Books::find($id);
 
@@ -43,7 +44,7 @@ class BookController extends Controller
         return $book;
     }
 
-    public function destroy(Books $book)
+    public function remove(Books $book)
     {
         $book->delete();
 

@@ -22,8 +22,19 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api/'], function ($app) {
     $app->get('login/','UserController@authenticate');
     $app->post('signup/','UserController@register');
-    $app->get('books/', 'BookController@index');
-    $app->get('books/{id}/', 'BookController@show');
-    $app->put('todo/{id}/', 'TodoController@update');
-    $app->delete('todo/{id}/', 'TodoController@destroy');
+    $app->get('books', 'BookController@showAll');
+    $app->get('books/{id}', 'BookController@showById');
+});
+
+$router->group(['prefix' => 'api/', 'middleware' => 'Authenticate'], function ($app) {
+    $app->post('books/fav/{id}', 'UserController@addFavorite');
+    $app->delete('books/fav/{id}', 'UserController@removeFavorite');
+    $app->delete('books/{id}', 'BookController@remove');
+    $app->get('books/csv', 'BookController@csvExport');
+});
+
+$router->group(['prefix' => 'api/', 'middleware' => ['Authenticate', 'AdminOnly']], function ($app) {
+    $app->post('books/', 'BookController@add');
+    $app->delete('books/{id}', 'BookController@remove');
+    $app->get('books/csv', 'BookController');
 });

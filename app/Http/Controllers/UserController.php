@@ -13,6 +13,13 @@ class UserController extends Controller
         //  $this->middleware('auth:api');
     }
 
+
+    public function addFavorite(Request $request)
+    {
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *

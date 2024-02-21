@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
 
-class Authenticate
+class AdminOnly
 {
     /**
      * The authentication guard factory instance.
@@ -37,20 +37,11 @@ class Authenticate
      */
     public function handle(Request $request, Closure $next, string $guard = null)
     {
-        $apiKey = $request->header('x-api-key');
+        $user = $request->user;
+        $role = $user->role;
 
-        if (!$apiKey) {
-            return response()->json(['error' => 'API key not provided.'], 401);
-        }
-
-        $user = Users::where('api_key', $apiKey)->first();
-
-        if (!$user) {
-            return response()->json(['error' => 'Invalid API key.'], 401);
-        }
-
-        // Add the user to the request
-        $request->user = $user;
+        if($role != 'admin')
+            return response()->json(['error' => 'Access denied.'], 403);
 
         return $next($request);
     }
