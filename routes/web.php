@@ -17,24 +17,23 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-//$router->get('/books', 'BookController@index');
+
 
 $router->group(['prefix' => 'api/'], function ($app) {
     $app->get('login/','UserController@authenticate');
     $app->post('signup/','UserController@register');
     $app->get('books', 'BookController@showAll');
-    $app->get('books/{id}', 'BookController@showById');
+    $app->get('books/{id:[0-9]+}', 'BookController@showById');
 });
 
-$router->group(['prefix' => 'api/', 'middleware' => 'Authenticate'], function ($app) {
-    $app->post('books/fav/{id}', 'UserController@addFavorite');
-    $app->delete('books/fav/{id}', 'UserController@removeFavorite');
-    $app->delete('books/{id}', 'BookController@remove');
-    $app->get('books/csv', 'BookController@csvExport');
+$router->group(['prefix' => 'api/', 'middleware' => \App\Http\Middleware\Authenticate::class], function ($app) {
+    $app->post('books/fav/{id:[0-9]+}', 'UserController@addFavorite');
+    $app->get('books/fav', 'UserController@getFavorite');
+    $app->delete('books/fav/{id:[0-9]+}', 'UserController@removeFavorite');
 });
 
-$router->group(['prefix' => 'api/', 'middleware' => ['Authenticate', 'AdminOnly']], function ($app) {
+$router->group(['prefix' => 'api/', 'middleware' => [\App\Http\Middleware\Authenticate::class, \App\Http\Middleware\AdminOnly::class]], function ($app) {
     $app->post('books/', 'BookController@add');
-    $app->delete('books/{id}', 'BookController@remove');
-    $app->get('books/csv', 'BookController');
+    $app->get('books/csv', 'BookController@csvExport');
+    $app->delete('books/{id:[0-9]+}', 'BookController@remove');
 });
