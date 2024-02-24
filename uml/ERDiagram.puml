@@ -1,7 +1,7 @@
 @startuml
 !theme plain
 entity "Users" as users {
-  + id : INT
+  PK | id : INT
   --
   login : VARCHAR(100)
   password : VARCHAR(100)
@@ -10,36 +10,42 @@ entity "Users" as users {
 }
 
 entity "Books" as books {
-  + id : INT
+  PK | id : INT
   --
   name : VARCHAR(100)
 }
 
 entity "Authors" as authors {
-  + id : INT
+  PK | id : INT
   --
   name : VARCHAR(100)
 }
 
 entity "Genres" as genres {
-  + id : INT
+  PK | id : INT
   --
   genre : VARCHAR(100)
 }
 
 entity "BookAuthors" as bookauthors {
-  + book_id : INT
-  + author_id : INT
+  PK | id : INT
+  --
+  FK | book_id : INT
+  FK | author_id : INT
 }
 
 entity "BookGenres" as bookgenres {
-  + book_id : INT
-  + genre_id : INT
+  PK | id : INT
+  --
+  FK | book_id : INT
+  FK | genre_id : INT
 }
 
 entity "UserFavorites" as userfavorites {
-  + user_id : INT
-  + book_id : INT
+  PK | id : INT
+  --
+  FK | user_id : INT
+  FK | book_id : INT
 }
 
 users -- userfavorites : "1:N"

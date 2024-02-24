@@ -1,45 +1,47 @@
 @startuml
 !theme plain
 class Users {
-  + id : INT
+  login : string
+  password : string
+  role : string
+  api_key : string
   --
-  login : VARCHAR(100)
-  password : VARCHAR(100)
-  role : VARCHAR(50)
-  api_key : VARCHAR(100)
+  +addBookToFavorite(int bookId) : Book
+  +removeBookFromFavorite(int bookId) : void
+  +getFavorite() : Book[]
 }
 
 class Books {
-  + id : INT
+  name : string
   --
-  name : VARCHAR(100)
+  +addBook(int bookId) : Book
+  +removeBook(int bookId) : void
+  +getBook(int bookId) : Book
+  +getAllBooks() : Book[]
+  +csvExport() : Response
 }
 
 class Authors {
-  + id : INT
-  --
-  name : VARCHAR(100)
+  name : string
 }
 
 class Genres {
-  + id : INT
-  --
-  genre : VARCHAR(100)
+  genre : string
 }
 
 class BookAuthors {
-  + book_id : INT
-  + author_id : INT
+  + book_id : int
+  + author_id : int
 }
 
 class BookGenres {
-  + book_id : INT
-  + genre_id : INT
+  + book_id : int
+  + genre_id : int
 }
 
 class UserFavorites {
-  + user_id : INT
-  + book_id : INT
+  + user_id : int
+  + book_id : int
 }
 
 Users "1" -- "N" UserFavorites : has
