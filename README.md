@@ -1,4 +1,4 @@
-# Online Library API - Виконав студент АІ-212 Іванов Михайло
+# Online Library API - АІ-212 Іванов Михайло
 
 ## Built with Lumen
 
